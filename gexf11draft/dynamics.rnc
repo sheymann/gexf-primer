@@ -1,0 +1,45 @@
+default namespace = "http://www.gephi.org/gexf/1.1draft"
+namespace       a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace     rng = "http://relaxng.org/ns/structure/1.0"
+datatypes     xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
+
+
+## Note: dynamic weight can be obtained by using the reserved title "weight" in attributes
+
+
+# extension point
+graph-content &=
+    attribute datetype { datetype-type }?
+  & attribute datefrom { date-type }?
+  & attribute dateto { date-type }?
+
+# extension point
+attributes-content &=
+    attribute datefrom { date-type }?
+  & attribute dateto { date-type }?
+
+# extension point
+attvalue-content &=
+    attribute datefrom { date-type }?
+  & attribute dateto { date-type }?
+
+# extension point
+node-content &=
+    attribute datefrom { date-type }?
+  & attribute dateto { date-type }?
+
+# extension point
+edge-content &=
+    attribute datefrom { date-type }?
+  & attribute dateto { date-type }?
+
+
+# new datatype
+date-type = 
+    xsd:date | xsd:integer
+
+# new datatype
+datetype-type = [ a:defaultValue = "date" ] 
+    string "integer" |
+    string "date"
+

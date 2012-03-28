@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.gexf.net/1.2draft file:/home/sebastien/work/gephi/gexf/gexf12draft/gexf.xsd" version="1.2" variant="variant1">
+    <meta lastmodifieddate="2006-05-04">
+        <description>description0</description>
+        <keywords>keywords0</keywords>
+    </meta>
+    <graph timeformat="integer" start="0" startopen="0" end="0" endopen="0" defaultedgetype="directed" idtype="integer"
+         mode="static">
+        <attributes class="node" mode="static" start="0" startopen="0" end="0" endopen="0">
+            <attribute id="id1" title="title1" type="integer">
+                <options>options0</options>
+                <default>default0</default>
+            </attribute>
+            <attribute id="id3" title="title3" type="integer">
+                <options>options1</options>
+                <options>options2</options>
+            </attribute>
+        </attributes>
+        <attributes class="node" mode="static" start="0" startopen="0" end="0" endopen="0">
+            <attribute id="id5" title="title5" type="integer">
+                <default>default1</default>
+                <options>options3</options>
+            </attribute>
+            <attribute id="id7" title="title7" type="integer">
+                <default>default2</default>
+                <default>default3</default>
+            </attribute>
+        </attributes>
+    </graph>
+</gexf>

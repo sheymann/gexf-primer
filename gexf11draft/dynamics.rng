@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- extension point -->
+  <define name="graph-content" combine="interleave">
+    <a:documentation>Note: dynamic weight can be obtained by using the reserved title "weight" in attributes</a:documentation>
+    <interleave>
+      <optional>
+        <attribute name="datetype">
+          <ref name="datetype-type"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="datefrom">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="dateto">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+    </interleave>
+  </define>
+  <!-- extension point -->
+  <define name="attributes-content" combine="interleave">
+    <interleave>
+      <optional>
+        <attribute name="datefrom">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="dateto">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+    </interleave>
+  </define>
+  <!-- extension point -->
+  <define name="attvalue-content" combine="interleave">
+    <interleave>
+      <optional>
+        <attribute name="datefrom">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="dateto">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+    </interleave>
+  </define>
+  <!-- extension point -->
+  <define name="node-content" combine="interleave">
+    <interleave>
+      <optional>
+        <attribute name="datefrom">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="dateto">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+    </interleave>
+  </define>
+  <!-- extension point -->
+  <define name="edge-content" combine="interleave">
+    <interleave>
+      <optional>
+        <attribute name="datefrom">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="dateto">
+          <ref name="date-type"/>
+        </attribute>
+      </optional>
+    </interleave>
+  </define>
+  <!-- new datatype -->
+  <define name="date-type">
+    <choice>
+      <data type="date"/>
+      <data type="integer"/>
+    </choice>
+  </define>
+  <!-- new datatype -->
+  <define name="datetype-type">
+    <choice>
+      <value type="string" datatypeLibrary="" a:defaultValue="date">integer</value>
+      <value type="string" datatypeLibrary="">date</value>
+    </choice>
+  </define>
+</grammar>

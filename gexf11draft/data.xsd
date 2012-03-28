@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gephi.org/gexf/1.1draft" xmlns:gexf="http://www.gephi.org/gexf/1.1draft">
+  <xs:import schemaLocation="viz.xsd"/>
+  <!-- extension point -->
+  <xs:complexType name="graph-content">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="gexf:attributes"/>
+      <xs:choice>
+        <xs:element ref="gexf:nodes"/>
+        <xs:element ref="gexf:edges"/>
+      </xs:choice>
+    </xs:choice>
+    <xs:attribute name="datetype" type="gexf:datetype-type"/>
+    <xs:attribute name="datefrom" type="gexf:date-type"/>
+    <xs:attribute name="dateto" type="gexf:date-type"/>
+    <xs:attribute name="defaultedgetype" type="gexf:defaultedgetype-type"/>
+    <xs:attribute name="idtype" type="gexf:idtype-type"/>
+    <xs:attribute name="mode" type="gexf:mode-type"/>
+  </xs:complexType>
+  <xs:element name="attributes" type="gexf:attributes-content"/>
+  <xs:element name="nodes" type="gexf:nodes-content"/>
+  <xs:element name="edges" type="gexf:edges-content"/>
+  <!-- extension point -->
+  <xs:complexType name="node-content">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="gexf:attvalues"/>
+      <xs:choice>
+        <xs:element ref="gexf:nodes"/>
+        <xs:element ref="gexf:edges"/>
+      </xs:choice>
+      <xs:element ref="gexf:parents"/>
+      <xs:choice>
+        <xs:element ref="gexf:color"/>
+        <xs:element ref="gexf:position"/>
+        <xs:element ref="gexf:size"/>
+      </xs:choice>
+    </xs:choice>
+    <xs:attribute name="datefrom" type="gexf:date-type"/>
+    <xs:attribute name="dateto" type="gexf:date-type"/>
+    <xs:attribute name="pid" type="gexf:id-type"/>
+    <xs:attribute name="id" use="required" type="gexf:id-type"/>
+    <xs:attribute name="label" use="required" type="xs:token"/>
+  </xs:complexType>
+  <xs:element name="attvalues" type="gexf:attvalues-content"/>
+  <xs:element name="parents" type="gexf:parents-content"/>
+  <xs:element name="color">
+    <xs:complexType>
+      <xs:attributeGroup ref="color-content"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="position">
+    <xs:complexType>
+      <xs:attributeGroup ref="position-content"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="size">
+    <xs:complexType>
+      <xs:attributeGroup ref="size-content"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- extension point -->
+  <xs:complexType name="edge-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="gexf:attvalues"/>
+    </xs:sequence>
+    <xs:attribute name="datefrom" type="gexf:date-type"/>
+    <xs:attribute name="dateto" type="gexf:date-type"/>
+    <xs:attribute name="id" use="required" type="gexf:id-type"/>
+    <xs:attribute name="type" type="gexf:edgetype-type"/>
+    <xs:attribute name="label" type="xs:token"/>
+    <xs:attribute name="source" use="required" type="gexf:id-type"/>
+    <xs:attribute name="target" use="required" type="gexf:id-type"/>
+    <xs:attribute name="weight" type="gexf:weight-type"/>
+  </xs:complexType>
+  <!-- new point -->
+  <xs:complexType name="attributes-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:attribute"/>
+    </xs:sequence>
+    <xs:attribute name="class" use="required" type="gexf:class-type"/>
+    <xs:attribute name="mode" type="gexf:mode-type"/>
+    <xs:attribute name="datefrom" type="gexf:date-type"/>
+    <xs:attribute name="dateto" type="gexf:date-type"/>
+  </xs:complexType>
+  <xs:element name="attribute" type="gexf:attribute-content"/>
+  <!-- new point -->
+  <xs:complexType name="attribute-content">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="gexf:default"/>
+      <xs:element ref="gexf:options"/>
+    </xs:choice>
+    <xs:attribute name="id" use="required" type="gexf:id-type"/>
+    <xs:attribute name="title" use="required" type="xs:string"/>
+    <xs:attribute name="type" use="required" type="gexf:attrtype-type"/>
+  </xs:complexType>
+  <xs:element name="default" type="xs:string"/>
+  <xs:element name="options" type="xs:string"/>
+  <!-- new point -->
+  <xs:complexType name="attvalues-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="gexf:attvalue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="attvalue">
+    <xs:complexType>
+      <xs:attributeGroup ref="gexf:attvalue-content"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- new point -->
+  <xs:attributeGroup name="attvalue-content">
+    <xs:attribute name="for" use="required" type="gexf:id-type"/>
+    <xs:attribute name="value" use="required" type="xs:string"/>
+    <xs:attribute name="datefrom" type="gexf:date-type"/>
+    <xs:attribute name="dateto" type="gexf:date-type"/>
+  </xs:attributeGroup>
+  <!-- new datatype -->
+  <xs:simpleType name="attrtype-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="integer"/>
+      <xs:enumeration value="long"/>
+      <xs:enumeration value="double"/>
+      <xs:enumeration value="float"/>
+      <xs:enumeration value="boolean"/>
+      <xs:enumeration value="liststring"/>
+      <xs:enumeration value="string"/>
+      <xs:enumeration value="anyURI"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- new datatype -->
+  <xs:simpleType name="class-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="node"/>
+      <xs:enumeration value="edge"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

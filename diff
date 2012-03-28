@@ -1,0 +1,55 @@
+Différences format 1.0 -> 1.1
+
+
+DTD -> RelaxNGCompact
+Support des espaces de nom comme xmlns:viz, validation automatique du fichier via xsi:schemaLocation, typage des données
+
+
+node.attvalues.attvalue.{ att }.value ----> node.attvalues.attvalue.value
+Supporte des données full text multi-ligne
+
+attvalue id -> attvalue for
+
+
+<!ATTLIST edge type (sim|dir|dou) #IMPLIED> ----> TypeEdge = [ a:defaultValue = "simple" ] attribute typeedge { string "simple" | string "directed" | string "double" }
+Type d'arc plus explicite et ajout d'une valeur par défaut
+
+
+Spécification des informations de visualisation, absentes en 1.0. Ajout de DataTypes contraintes d'intégrité sur les canaux de couleur (r,g,b : entiers de 0. à 255), les positions (x,y,z : flottants) et la taille des noeuds (flottant au minimum à 0.0) par défaut à 1.0.
+
+
+node.count CDATA ----> element count { xsd:nonNegativeInteger }
+Ajout d'une contrainte d'intégrité sur le nombre de noeuds.
+
+
+Les titres des attributs deviennent des éléments au lieu d'attributs car ils se servent pas à effectuer des calculs
+
+
+graph.{ attr }.edges ----> graph.{ attr }.defaultedgetype
+
+
+Ajout de contraintes d'intégrité sur les dates, datefrom et dateto (xsd:date).
+Ajout de contrainte d'intégrité sur le cardinal des arcs { xsd:positiveInteger }
+Ajout de contrainte d'intégrité sur le level (xsd:nonNegativeInteger).
+
+
+Le type d'attribut (static|dynamic) est renommé en mode (c'est un comportement contraignant).
+
+
+
+:: Contraintes d'intégrité non vérifiées par le format ::
+
+HIERARCHIE
+Les références sur les IDs et les PIDs (ne sont pas des id au sens XML).
+
+IMPLEMENTATION
+Variant n'est pas contraint, et laisse la possibilité d'indiquer si le format fichier doit être parsé différemment de l'importeur officiel
+
+ATTRIBUTS
+La valeur des attributs vis-à-vis du type déclaré.
+La valeur par défaut d'un attribut vis-à-vis du type déclaré.
+
+DATES
+Sur un élément, datefrom et dateto doivent être différents.
+edge.dateto <= target.dateto
+

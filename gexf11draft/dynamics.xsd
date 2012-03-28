@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gephi.org/gexf/1.1draft" xmlns:gexf="http://www.gephi.org/gexf/1.1draft">
+  <xs:import schemaLocation="viz.xsd"/>
+  <!-- extension point -->
+  <!-- extension point -->
+  <!-- extension point -->
+  <!-- extension point -->
+  <!-- extension point -->
+  <!-- new datatype -->
+  <xs:simpleType name="date-type">
+    <xs:union memberTypes="xs:date xs:integer"/>
+  </xs:simpleType>
+  <!-- new datatype -->
+  <xs:simpleType name="datetype-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="integer"/>
+      <xs:enumeration value="date"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

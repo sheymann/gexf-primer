@@ -1,0 +1,15 @@
+*.aux
+*.dvi
+*.ilg
+*.ind
+*.idx
+*.log
+*.out
+*.pdf
+*.pl
+*.toc
+*.backup
+*.synctex.gz
+WARNINGS
+.bzr
+.bzrignore
